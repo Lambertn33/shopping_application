@@ -8,7 +8,7 @@
                 </li>
                 <li>
                     <font-awesome-icon icon="user-circle" />
-                    <a href="">My Account</a>
+                    <a href="">My Wish List</a>
                 </li>
             </ul>
         </div>
