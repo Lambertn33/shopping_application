@@ -4,6 +4,8 @@ import { createApp } from "vue";
 
 import App from "./App.vue";
 
+import router from "./router";
+
 import * as mdb from "mdb-ui-kit";
 
 import "mdb-ui-kit/css/mdb.min.css";
@@ -37,4 +39,5 @@ library.add(
 createApp(App)
     .component("font-awesome-icon", FontAwesomeIcon)
     .use(mdb)
+    .use(router)
     .mount("#app");

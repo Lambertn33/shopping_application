@@ -19,65 +19,42 @@
                     class="navbar-toggler"
                     type="button"
                     data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarExample01"
+                    data-mdb-target="#navbar"
                     aria-controls="navbarExample01"
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
                     <font-awesome-icon icon="bars" />
                 </button>
-                <div class="collapse navbar-collapse" id="navbarExample01">
-                    <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <div class="collapse navbar-collapse" id="navbar">
+                    <router-link to="/" class="navbar-brand mt-2 mt-lg-0">
                         <img
-                            src="https://thumbs.dreamstime.com/z/shop-building-colorful-isolated-white-33822015.jpg"
-                            height="40"
+                            :src="logoImage.url"
+                            :height="logoImage.height"
                             rounded
-                            class="logo"
-                            loading="lazy"
+                            :class="logoImage.class"
+                            :loading="logoImage.loading"
                         />
-                    </a>
+                    </router-link>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <font-awesome-icon class="text-dark" icon="home" />
-                            <a
-                                class="nav-link text-dark"
-                                aria-current="page"
-                                href="#"
-                                >Home</a
-                            >
-                        </li>
-                        <li class="nav-item">
+                        <li
+                            class="nav-item"
+                            v-for="navigationLink in navigationLinks"
+                            :key="navigationLink.name"
+                        >
                             <font-awesome-icon
                                 class="text-dark"
-                                icon="circle-question"
+                                :icon="navigationLink.icon"
                             />
-                            <a
+                            <router-link
                                 class="nav-link text-dark"
                                 aria-current="page"
-                                href="#"
-                                >About us</a
-                            >
-                        </li>
-                        <li class="nav-item">
-                            <font-awesome-icon
-                                class="text-dark"
-                                icon="bag-shopping"
-                            />
-                            <a
-                                class="nav-link text-dark"
-                                aria-current="page"
-                                href="#"
-                                >Shop</a
+                                :to="navigationLink.slug"
+                                >{{ navigationLink.name }}</router-link
                             >
                         </li>
                     </ul>
                     <div class="d-flex align-items-center">
-                        <a class="text-reset me-3" href="#">
-                            <i
-                                class="fas fa-shopping-cart text-dark"
-                                size="xl"
-                            ></i>
-                        </a>
                         <div class="dropdown">
                             <a
                                 class="text-reset me-3 dropdown-toggle hidden-arrow"
@@ -90,6 +67,7 @@
                                 <font-awesome-icon
                                     class="text-dark"
                                     icon="bag-shopping"
+                                    size="xl"
                                 />
                                 <span
                                     class="badge rounded-pill badge-notification bg-danger"
@@ -118,6 +96,38 @@
         </nav>
     </header>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            logoImage: {
+                url: "https://thumbs.dreamstime.com/z/shop-building-colorful-isolated-white-33822015.jpg",
+                height: "40",
+                loading: "lazy",
+                class: "logo",
+            },
+            navigationLinks: [
+                {
+                    name: "Home",
+                    slug: "/",
+                    icon: "home",
+                },
+                {
+                    name: "About us",
+                    slug: "/about",
+                    icon: "circle-question",
+                },
+                {
+                    name: "Shop",
+                    slug: "/shop",
+                    icon: "bag-shopping",
+                },
+            ],
+        };
+    },
+};
+</script>
 
 <style>
 .logo {
