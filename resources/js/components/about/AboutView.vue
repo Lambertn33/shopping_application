@@ -5,20 +5,25 @@
     <div class="bg-light about-section"></div>
     <div class="about-modal">
         <div class="about-content bg-light">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum cum
-            reiciendis, dolor natus, dicta nam blanditiis obcaecati sed,
-            expedita animi nesciunt praesentium mollitia consequuntur placeat
-            quis error hic similique voluptates Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Eum cum reiciendis, dolor natus, dicta
-            nam blanditiis obcaecati sed, expedita animi nesciunt praesentium
-            mollitia consequuntur placeat quis error hic similique voluptates
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum cum
-            reiciendis, dolor natus, dicta nam blanditiis obcaecati sed,
-            expedita animi nesciunt praesentium mollitia consequuntur placeat
-            quis error hic similique voluptates Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Eum cum reiciendis, dolor natus, dicta
-            nam blanditiis obcaecati sed, expedita animi nesciunt praesentium
-            mollitia consequuntur placeat quis error hic similique voluptates
+            <div>
+                <h3 class="about-content-header">WHO WE ARE</h3>
+                Lorem ipsum dolor sit amet <span class="text-info"><b>consectetur adipisicing</b></span> elit. Eum cum
+                reiciendis, dolor natus, dicta nam blanditiis obcaecati sed,
+                expedita animi nesciunt praesentium mollitia consequuntur
+            </div>
+            <hr>
+            <div>
+                <h3 class="about-content-header">MISSION & VISION</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum cum
+                reiciendis, dolor natus, dicta nam blanditiis obcaecati sed,
+                expedita animi nesciunt praesentium mollitia consequuntur
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum cum
+                reiciendis, dolor natus, dicta nam blanditiis obcaecati sed,
+                expedita animi nesciunt praesentium mollitia consequuntur
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum cum
+                reiciendis, dolor natus, dicta nam blanditiis obcaecati sed,
+                expedita animi nesciunt praesentium mollitia consequuntur
+            </div>
         </div>
     </div>
 </template>
@@ -39,6 +44,10 @@
     padding: 2.5rem;
     border-radius: 0.625rem;
     box-shadow: 0.3125rem 0.625rem 0.5rem #888888;
+}
+
+.about-content-header {
+    font-weight: 600;
 }
 
 .about-modal {
