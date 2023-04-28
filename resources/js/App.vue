@@ -9,10 +9,15 @@
 import HomeView from "./components/home/HomeView.vue";
 import TheHeader from "./components/TheHeader.vue";
 export default {
+    data() {
+        return {
+            latestProductsByDate:[]
+        }
+    },
     components: {
-    TheHeader,
-    HomeView
-},
+        TheHeader,
+        HomeView,
+    },
 };
 </script>
 

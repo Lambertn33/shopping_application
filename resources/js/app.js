@@ -4,7 +4,11 @@ import { createApp } from "vue";
 
 import App from "./App.vue";
 
+import TheSpinner from './components/TheSpinner.vue';
+
 import router from "./router";
+
+import store from "./store";
 
 import * as mdb from "mdb-ui-kit";
 
@@ -17,6 +21,7 @@ import {
     faBars,
     faHouse,
     faArrowRight,
+    faHeart,
     faQuestionCircle,
     faBagShopping,
     faCartShopping,
@@ -28,6 +33,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
     faPhone,
     faArrowRight,
+    faHeart,
     faBars,
     faHouse,
     faQuestionCircle,
@@ -38,6 +44,8 @@ library.add(
 
 createApp(App)
     .component("font-awesome-icon", FontAwesomeIcon)
+    .component("the-spinner", TheSpinner)
     .use(mdb)
     .use(router)
+    .use(store)
     .mount("#app");

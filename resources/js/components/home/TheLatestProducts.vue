@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-4 p-4">
+    <div class="mt-4 latestProducts">
         <h2 class="text-center">Latest Products</h2>
         <ul class="nav nav-tabs mb-3" id="myTab0" role="tablist">
             <li class="nav-item" role="presentation">
@@ -7,7 +7,7 @@
                     class="nav-link active"
                     id="home-tab0"
                     data-mdb-toggle="tab"
-                    data-mdb-target="#home0"
+                    data-mdb-target="#latestProducts"
                     type="button"
                     role="tab"
                     aria-controls="home"
@@ -48,11 +48,54 @@
         <div class="tab-content" id="myTabContent0">
             <div
                 class="tab-pane fade show active"
-                id="home0"
+                id="latestProducts"
                 role="tabpanel"
                 aria-labelledby="home-tab0"
             >
-                Tab 1 content.
+                <the-spinner v-if="isFetching" />
+                <div class="row" v-else>
+                    <div
+                        class="col-md-3 pb-4"
+                        v-for="product in latestProductsByDate"
+                        :key="product.id"
+                    >
+                        <div class="card">
+                            <img
+                                :src="product.image"
+                                class="card-img-top"
+                                height="300"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ renderProductTitle(product.title) }}
+                                </h5>
+                                <p class="card-text">
+                                    {{
+                                        renderProductDescription(
+                                            product.description
+                                        )
+                                    }}
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <a
+                                    href="#!"
+                                    class="btn btn-outline-info btn-rounded"
+                                >
+                                    More
+                                    <font-awesome-icon icon="arrow-right" />
+                                </a>
+                                <a
+                                    href="#!"
+                                    class="btn btn-info btn-rounded"
+                                >
+                                    add to wishlist
+                                    <font-awesome-icon icon="heart" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div
                 class="tab-pane fade"
@@ -60,7 +103,7 @@
                 role="tabpanel"
                 aria-labelledby="profile-tab0"
             >
-                Tab 2 content
+                <the-spinner />
             </div>
             <div
                 class="tab-pane fade"
@@ -68,27 +111,68 @@
                 role="tabpanel"
                 aria-labelledby="contact-tab0"
             >
-                Tab 3 content
+                <the-spinner />
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <img
-                        src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-                        class="card-img-top"
-                        alt="Fissure in Sandstone"
-                    />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                            Some quick example text to build on the card title
-                            and make up the bulk of the card's content.
-                        </p>
-                        <a href="#!" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            isFetching: false,
+            latestProductsByDate: [],
+        };
+    },
+
+    methods: {
+        async getLatestProductsByDate() {
+            this.isFetching = true;
+            const response = await this.$store.dispatch(
+                "getLatestProductsByDate"
+            );
+            const { data } = response;
+            this.$store.commit("setLatestProductsByDate", data);
+            this.latestProductsByDate = data;
+            this.isFetching = false;
+        },
+    },
+
+    computed: {
+        renderProductTitle() {
+            return (title) =>
+                title.length > 20 ? `${title.substr(0, 20)} ...` : title;
+        },
+        renderProductDescription() {
+            return (description) =>
+                description.length > 180
+                    ? `${description.substr(0, 180)} ...`
+                    : description;
+        },
+    },
+
+    mounted() {
+        this.getLatestProductsByDate();
+    },
+};
+</script>
+
+<style>
+.card-img-top {
+    padding: 1.75rem;
+}
+.card-title {
+    font-weight: 700;
+}
+.card-text {
+    font-size: 13px;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-evenly;
+}
+.latestProducts {
+    padding: 1rem 4rem;
+}
+</style>
