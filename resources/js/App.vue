@@ -2,12 +2,14 @@
     <div class="main">
         <TheHeader />
         <router-view />
+        <TheFooter />
     </div>
 </template>
 
 <script>
 import HomeView from "./components/home/HomeView.vue";
 import TheHeader from "./components/TheHeader.vue";
+import TheFooter from "./components/TheFooter.vue";
 export default {
     data() {
         return {
@@ -17,6 +19,7 @@ export default {
     components: {
         TheHeader,
         HomeView,
+        TheFooter
     },
 };
 </script>

@@ -27,6 +27,8 @@ import {
     faQuestionCircle,
     faBagShopping,
     faCartShopping,
+    faGem,
+    faEnvelope,
     faCircleUser
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -37,10 +39,12 @@ library.add(
     faArrowRight,
     faHeart,
     faBars,
+    faGem,
     faHouse,
     faQuestionCircle,
     faBagShopping,
     faCircleUser,
+    faEnvelope,
     faCartShopping
 );
 

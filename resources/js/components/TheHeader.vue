@@ -1,10 +1,10 @@
 <template>
     <header>
-        <div class="upper-header">
+        <div class="upper-header bg-info">
             <ul class="d-flex justify-content-end">
                 <li>
                     <font-awesome-icon icon="user-circle" />
-                    <a href="">My Account</a>
+                    <a class="text-dark" href=""><b>My Account</b></a>
                 </li>
             </ul>
         </div>
@@ -179,8 +179,7 @@ export default {
 }
 
 .upper-header {
-    background-color: black;
-    color: #fff;
+    color: #000;
 }
 
 .upper-header ul {
