@@ -146,8 +146,8 @@ export default {
         },
         renderProductDescription() {
             return (description) =>
-                description.length > 180
-                    ? `${description.substr(0, 180)} ...`
+                description.length > 105
+                    ? `${description.substr(0, 105)} ...`
                     : description;
         },
     },
@@ -166,7 +166,7 @@ export default {
     font-weight: 700;
 }
 .card-text {
-    font-size: 13px;
+    font-size: 0.8125rem;
 }
 .card-footer {
     display: flex;
