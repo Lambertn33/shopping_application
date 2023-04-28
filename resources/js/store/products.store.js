@@ -4,6 +4,7 @@ export const productsStore = {
     state: {
         latestProductsByDate: [],
         latestProductsByBestSale: [],
+        latestElectronicProducts: [],
     },
 
     actions: {
@@ -27,6 +28,16 @@ export const productsStore = {
                 }
             );
         },
+        getLatestElectronicProducts({ commit }) {
+            return productsServices.getLatestElectronicProducts().then(
+                response => {
+                    return Promise.resolve(response);
+                },
+                error => {
+                    return Promise.reject(error);
+                }
+            );
+        },
     },
     mutations: {
         setLatestProductsByDate(state, products) {
@@ -34,6 +45,9 @@ export const productsStore = {
         },
         setLatestProductsByBestSale(state, products) {
             state.latestProductsByBestSale = products;
+        },
+        setLatestElectronicProducts(state, products) {
+            state.latestElectronicProducts = products;
         },
     },
 
@@ -43,6 +57,9 @@ export const productsStore = {
         },
         getLatestProductsByBestSale(state) {
             return state.latestProductsByBestSale;
+        },
+        getLatestElectronicProducts(state) {
+            return state.latestElectronicProducts;
         },
     },
 };

@@ -148,7 +148,47 @@
                 role="tabpanel"
                 aria-labelledby="contact-tab0"
             >
-                <the-spinner />
+                <the-spinner v-if="isFetching" />
+                <div class="row" v-else>
+                    <div
+                        class="col-md-3 pb-4"
+                        v-for="product in latestElectronicProducts"
+                        :key="product.id"
+                    >
+                        <div class="card">
+                            <img
+                                :src="product.image"
+                                class="card-img-top"
+                                height="300"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ renderProductTitle(product.title) }}
+                                </h5>
+                                <p class="card-text">
+                                    {{
+                                        renderProductDescription(
+                                            product.description
+                                        )
+                                    }}
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <a
+                                    href="#!"
+                                    class="btn btn-outline-info btn-rounded"
+                                >
+                                    More
+                                    <font-awesome-icon icon="arrow-right" />
+                                </a>
+                                <a href="#!" class="btn btn-info btn-rounded">
+                                    add to wishlist
+                                    <font-awesome-icon icon="heart" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -160,6 +200,8 @@ export default {
         return {
             isFetching: false,
             latestProductsByDate: [],
+            latestProductsByBestSale: [],
+            latestElectronicProducts: [],
         };
     },
 
@@ -172,15 +214,28 @@ export default {
             const latestProductsByBestSaleResponse = await this.$store.dispatch(
                 "getLatestProductsByBestSale"
             );
+            const latestElectronicProductsResponse = await this.$store.dispatch(
+                "getLatestElectronicProducts"
+            );
+
             const { data: latestProductsByDate } = latestProductsByDateResponse;
             const { data: latestProductsByBestSale } =
                 latestProductsByBestSaleResponse;
+            const { data: latestElectronicProducts } =
+                latestElectronicProductsResponse;
+
             this.$store.commit("setLatestProductsByDate", latestProductsByDate);
             this.$store.commit(
                 "setLatestProductsByBestSale",
                 latestProductsByBestSale
             );
+            this.$store.commit(
+                "setLatestElectronicProducts",
+                latestElectronicProducts
+            );
+
             this.latestProductsByDate = latestProductsByDate;
+            this.latestElectronicProducts = latestElectronicProducts;
             this.latestProductsByBestSale = latestProductsByBestSale.reverse();
             this.isFetching = false;
         },
