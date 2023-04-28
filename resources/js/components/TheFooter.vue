@@ -52,6 +52,7 @@
 </script>
 
 <style scoped>
+
 footer section {
     padding: 1rem 0;
     color: #fff;
