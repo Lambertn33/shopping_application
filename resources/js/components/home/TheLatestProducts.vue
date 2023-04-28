@@ -85,10 +85,7 @@
                                     More
                                     <font-awesome-icon icon="arrow-right" />
                                 </a>
-                                <a
-                                    href="#!"
-                                    class="btn btn-info btn-rounded"
-                                >
+                                <a href="#!" class="btn btn-info btn-rounded">
                                     add to wishlist
                                     <font-awesome-icon icon="heart" />
                                 </a>
@@ -103,7 +100,47 @@
                 role="tabpanel"
                 aria-labelledby="profile-tab0"
             >
-                <the-spinner />
+                <the-spinner v-if="isFetching" />
+                <div class="row" v-else>
+                    <div
+                        class="col-md-3 pb-4"
+                        v-for="product in latestProductsByBestSale"
+                        :key="product.id"
+                    >
+                        <div class="card">
+                            <img
+                                :src="product.image"
+                                class="card-img-top"
+                                height="300"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ renderProductTitle(product.title) }}
+                                </h5>
+                                <p class="card-text">
+                                    {{
+                                        renderProductDescription(
+                                            product.description
+                                        )
+                                    }}
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <a
+                                    href="#!"
+                                    class="btn btn-outline-info btn-rounded"
+                                >
+                                    More
+                                    <font-awesome-icon icon="arrow-right" />
+                                </a>
+                                <a href="#!" class="btn btn-info btn-rounded">
+                                    add to wishlist
+                                    <font-awesome-icon icon="heart" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div
                 class="tab-pane fade"
@@ -129,12 +166,22 @@ export default {
     methods: {
         async getLatestProductsByDate() {
             this.isFetching = true;
-            const response = await this.$store.dispatch(
+            const latestProductsByDateResponse = await this.$store.dispatch(
                 "getLatestProductsByDate"
             );
-            const { data } = response;
-            this.$store.commit("setLatestProductsByDate", data);
-            this.latestProductsByDate = data;
+            const latestProductsByBestSaleResponse = await this.$store.dispatch(
+                "getLatestProductsByBestSale"
+            );
+            const { data: latestProductsByDate } = latestProductsByDateResponse;
+            const { data: latestProductsByBestSale } =
+                latestProductsByBestSaleResponse;
+            this.$store.commit("setLatestProductsByDate", latestProductsByDate);
+            this.$store.commit(
+                "setLatestProductsByBestSale",
+                latestProductsByBestSale
+            );
+            this.latestProductsByDate = latestProductsByDate;
+            this.latestProductsByBestSale = latestProductsByBestSale.reverse();
             this.isFetching = false;
         },
     },
@@ -158,7 +205,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .card-img-top {
     padding: 1.75rem;
 }
