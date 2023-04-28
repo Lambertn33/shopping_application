@@ -4,6 +4,8 @@ import { createApp } from "vue";
 
 import App from "./App.vue";
 
+import TheCard from "./components/TheCard.vue";
+
 import TheSpinner from './components/TheSpinner.vue';
 
 import router from "./router";
@@ -45,6 +47,7 @@ library.add(
 createApp(App)
     .component("font-awesome-icon", FontAwesomeIcon)
     .component("the-spinner", TheSpinner)
+    .component("the-card", TheCard)
     .use(mdb)
     .use(router)
     .use(store)

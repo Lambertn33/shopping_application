@@ -1,15 +1,15 @@
 <template>
     <TheBanner />
-    <TheLatestProducts />
+    <LatestProducts />
 </template>
 
 <script>
 import TheBanner from "./TheBanner.vue";
-import TheLatestProducts from "./TheLatestProducts.vue";
+import LatestProducts from "./LatestProducts.vue";
 export default {
     components: {
         TheBanner,
-        TheLatestProducts,
+        LatestProducts,
     },
 };
 </script>

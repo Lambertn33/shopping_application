@@ -59,38 +59,7 @@
                         v-for="product in latestProductsByDate"
                         :key="product.id"
                     >
-                        <div class="card">
-                            <img
-                                :src="product.image"
-                                class="card-img-top"
-                                height="300"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    {{ renderProductTitle(product.title) }}
-                                </h5>
-                                <p class="card-text">
-                                    {{
-                                        renderProductDescription(
-                                            product.description
-                                        )
-                                    }}
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a
-                                    href="#!"
-                                    class="btn btn-outline-info btn-rounded"
-                                >
-                                    More
-                                    <font-awesome-icon icon="arrow-right" />
-                                </a>
-                                <a href="#!" class="btn btn-info btn-rounded">
-                                    add to wishlist
-                                    <font-awesome-icon icon="heart" />
-                                </a>
-                            </div>
-                        </div>
+                        <LatestDetails :product="product" />
                     </div>
                 </div>
             </div>
@@ -107,38 +76,7 @@
                         v-for="product in latestProductsByBestSale"
                         :key="product.id"
                     >
-                        <div class="card">
-                            <img
-                                :src="product.image"
-                                class="card-img-top"
-                                height="300"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    {{ renderProductTitle(product.title) }}
-                                </h5>
-                                <p class="card-text">
-                                    {{
-                                        renderProductDescription(
-                                            product.description
-                                        )
-                                    }}
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a
-                                    href="#!"
-                                    class="btn btn-outline-info btn-rounded"
-                                >
-                                    More
-                                    <font-awesome-icon icon="arrow-right" />
-                                </a>
-                                <a href="#!" class="btn btn-info btn-rounded">
-                                    add to wishlist
-                                    <font-awesome-icon icon="heart" />
-                                </a>
-                            </div>
-                        </div>
+                        <LatestDetails :product="product" />
                     </div>
                 </div>
             </div>
@@ -155,38 +93,7 @@
                         v-for="product in latestElectronicProducts"
                         :key="product.id"
                     >
-                        <div class="card">
-                            <img
-                                :src="product.image"
-                                class="card-img-top"
-                                height="300"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    {{ renderProductTitle(product.title) }}
-                                </h5>
-                                <p class="card-text">
-                                    {{
-                                        renderProductDescription(
-                                            product.description
-                                        )
-                                    }}
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a
-                                    href="#!"
-                                    class="btn btn-outline-info btn-rounded"
-                                >
-                                    More
-                                    <font-awesome-icon icon="arrow-right" />
-                                </a>
-                                <a href="#!" class="btn btn-info btn-rounded">
-                                    add to wishlist
-                                    <font-awesome-icon icon="heart" />
-                                </a>
-                            </div>
-                        </div>
+                        <LatestDetails :product="product" />
                     </div>
                 </div>
             </div>
@@ -195,7 +102,11 @@
 </template>
 
 <script>
+import LatestDetails from "./LatestDetails.vue";
 export default {
+    components: {
+        LatestDetails,
+    },
     data() {
         return {
             isFetching: false,
@@ -206,7 +117,7 @@ export default {
     },
 
     methods: {
-        async getLatestProductsByDate() {
+        async getLatestProducts() {
             this.isFetching = true;
             const latestProductsByDateResponse = await this.$store.dispatch(
                 "getLatestProductsByDate"
@@ -217,6 +128,7 @@ export default {
             const latestElectronicProductsResponse = await this.$store.dispatch(
                 "getLatestElectronicProducts"
             );
+            
 
             const { data: latestProductsByDate } = latestProductsByDateResponse;
             const { data: latestProductsByBestSale } =
@@ -229,6 +141,7 @@ export default {
                 "setLatestProductsByBestSale",
                 latestProductsByBestSale
             );
+            
             this.$store.commit(
                 "setLatestElectronicProducts",
                 latestElectronicProducts
@@ -255,7 +168,7 @@ export default {
     },
 
     mounted() {
-        this.getLatestProductsByDate();
+        this.getLatestProducts();
     },
 };
 </script>
