@@ -52,7 +52,7 @@
                 role="tabpanel"
                 aria-labelledby="home-tab0"
             >
-                <the-spinner v-if="isFetching" />
+                <app-spinner v-if="isFetching" />
                 <div class="row" v-else>
                     <div
                         class="col-md-3 pb-4"
@@ -69,7 +69,7 @@
                 role="tabpanel"
                 aria-labelledby="profile-tab0"
             >
-                <the-spinner v-if="isFetching" />
+                <app-spinner v-if="isFetching" />
                 <div class="row" v-else>
                     <div
                         class="col-md-3 pb-4"
@@ -86,7 +86,7 @@
                 role="tabpanel"
                 aria-labelledby="contact-tab0"
             >
-                <the-spinner v-if="isFetching" />
+                <app-spinner v-if="isFetching" />
                 <div class="row" v-else>
                     <div
                         class="col-md-3 pb-4"

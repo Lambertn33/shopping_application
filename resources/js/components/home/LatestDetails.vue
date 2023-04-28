@@ -1,5 +1,5 @@
 <template>
-    <the-card>
+    <app-card>
         <template v-slot:card-image>
             <img :src="product.image" class="card-img-top" height="300" />
         </template>
@@ -21,7 +21,7 @@
                 <font-awesome-icon icon="heart" />
             </a>
         </template>
-    </the-card>
+    </app-card>
 </template>
 
 <script>
