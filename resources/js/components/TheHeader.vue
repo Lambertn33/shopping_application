@@ -6,10 +6,6 @@
                     <font-awesome-icon icon="user-circle" />
                     <a href="">My Account</a>
                 </li>
-                <li>
-                    <font-awesome-icon icon="user-circle" />
-                    <a href="">My Wish List</a>
-                </li>
             </ul>
         </div>
         <!-- Navbar -->
@@ -55,6 +51,36 @@
                         </li>
                     </ul>
                     <div class="d-flex align-items-center">
+                        <div class="dropdown">
+                            <a
+                                class="text-reset me-3 dropdown-toggle hidden-arrow"
+                                href="#"
+                                id="navbarDropdownMenuLink"
+                                role="button"
+                                data-mdb-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <font-awesome-icon
+                                    class="text-dark"
+                                    icon="heart"
+                                    size="xl"
+                                />
+                                <span
+                                    class="badge rounded-pill badge-notification bg-danger"
+                                    >0</span
+                                >
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="navbarDropdownMenuLink"
+                            >
+                                <li>
+                                    <a class="dropdown-item" href="#"
+                                        >My wishlist</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
                         <div class="dropdown">
                             <a
                                 class="text-reset me-3 dropdown-toggle hidden-arrow"

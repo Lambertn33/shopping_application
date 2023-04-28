@@ -8,7 +8,7 @@
                         Get 50% off for shopping with us in this quarter
                     </h6>
                     <a
-                        class="btn btn-outline-light btn-lg"
+                        class="btn btn-outline-light btn-rounded btn-lg"
                         href="#!"
                         role="button"
                     >
