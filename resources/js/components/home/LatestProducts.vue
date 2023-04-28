@@ -174,19 +174,6 @@ export default {
 </script>
 
 <style scoped>
-.card-img-top {
-    padding: 1.75rem;
-}
-.card-title {
-    font-weight: 700;
-}
-.card-text {
-    font-size: 0.8125rem;
-}
-.card-footer {
-    display: flex;
-    justify-content: space-evenly;
-}
 .latestProducts {
     padding: 1rem 4rem;
 }

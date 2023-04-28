@@ -10,19 +10,9 @@
     </div>
 </template>
 
-<script>
-export default {
-    computed: {
-        renderProductTitle() {
-            return (title) =>
-                title.length > 20 ? `${title.substr(0, 20)} ...` : title;
-        },
-        renderProductDescription() {
-            return (description) =>
-                description.length > 105
-                    ? `${description.substr(0, 105)} ...`
-                    : description;
-        },
-    },
-};
-</script>
+<style>
+.card-footer {
+    display: flex;
+    justify-content: space-evenly;
+}
+</style>
